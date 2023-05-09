@@ -134,7 +134,6 @@ struct APIClient {
         let request = useSLLPinning ? CustomSessionManager.shared.request(url, method: method, parameters: parameters, encoding: encoding.alamofire, headers: header) : CustomSessionManagerNoSSL.shared.request(url, method: method, parameters: parameters, encoding: encoding.alamofire, headers: header)
         
         let req = request.log().responseData(completionHandler: { response in
-            os_log("Restarting local session", log: logger)
             
             guard response.response?.statusCode == 200 && response.error == nil, var data = response.data else {
                 os_log("The api response came with http error", log: logger)

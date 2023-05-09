@@ -12,9 +12,11 @@ struct Discovery {
     var services: [ServiceAPIModel]?
     
     init() {
-        let service1 = ServiceAPIModel(service: "reserva", location: "http://localhost:9090/api/")
+        let service1 = ServiceAPIModel(service: "reserva", location: "http://localhost:9090/api")
+        let service2 = ServiceAPIModel(service: "restaurante", location: "http://localhost:9090/api")
         self.services = []
         self.services?.append(service1)
+        self.services?.append(service2)
     }
 }
 
@@ -33,15 +35,19 @@ struct ServiceAPIModel: Codable {
 }
 
 enum DiscoveryAPI {
-    case reserva(String)
+    case reservation(String)
+    case restaurant(String)
 
     /// The API identifier used by the discovery service.
     var urlString: String? {
         var serv = ""
         var command = ""
         switch self {
-        case .reserva(let cmd):
+        case .reservation(let cmd):
             serv = "reserva"
+            command = cmd
+        case .restaurant(let cmd):
+            serv = "restaurante"
             command = cmd
         }
         
@@ -57,7 +63,7 @@ enum DiscoveryAPI {
         let location = Discovery.shared.services?.filter({ serviceIn in
             serviceIn.service == service
         })
-        return location?.first?.location ?? ""
+        return "\(location?.first?.location ?? "")/\(service)"
     }
 }
 
