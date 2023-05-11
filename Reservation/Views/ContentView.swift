@@ -14,13 +14,13 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            RestaurantsView()
+            RestaurantsView(restaurantDestination: .filterView)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("Reservations")
                 }
             
-            Text("Segunda pestaña")
+            RestaurantsView(restaurantDestination: .hoursAvailableView)
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add Reservation")

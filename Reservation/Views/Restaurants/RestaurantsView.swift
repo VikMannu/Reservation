@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+enum RestaurantDestination {
+    case filterView
+    case hoursAvailableView
+}
+
 struct RestaurantsView: View {
     @StateObject var viewModel = RestaurantsViewModel()
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+    
+    private let restaurantDestination: RestaurantDestination
+    
+    init(restaurantDestination: RestaurantDestination) {
+        self.restaurantDestination = restaurantDestination
+    }
     
     var filteredRestaurants: [RestaurantModel] {
         if searchText.isEmpty {
@@ -62,8 +73,14 @@ struct RestaurantsView: View {
                 
                 // List view
                 List(filteredRestaurants, id: \.id) { restaurant in
-                    NavigationLink(destination: FilterView(restaurant: restaurant)) {
-                        Text(restaurant.name ?? "")
+                    if self.restaurantDestination == .filterView {
+                        NavigationLink(destination: FilterView(restaurant: restaurant)) {
+                            Text(restaurant.name ?? "")
+                        }
+                    } else {
+                        NavigationLink(destination: HoursAvailableView()) {
+                            Text(restaurant.name ?? "")
+                        }
                     }
                 }
             }.navigationBarTitle(Text("Restaurants"))
@@ -83,6 +100,6 @@ struct RestaurantsView: View {
 
 struct RestaurantsView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantsView()
+        RestaurantsView(restaurantDestination: .filterView)
     }
 }

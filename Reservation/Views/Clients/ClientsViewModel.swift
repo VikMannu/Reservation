@@ -12,11 +12,7 @@ class ClienstViewModel: ObservableObject {
     
     @Published var clients = [ClientModel]()
     
-    init() {
-        self.getClients()
-    }
-    
-    private func getClients() {
+    func getClients() {
         self.isLoading = true
         APIClient.apiRequest(
             method: .get,

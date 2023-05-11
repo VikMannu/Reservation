@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum BackClient {
+    case filterView
+    case hoursAvailableView
+}
+
 struct ClientsView: View {
     @Environment(\.presentationMode) var presentationMode
     
@@ -15,6 +20,9 @@ struct ClientsView: View {
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+    @State private var isPresented = false
+    
+    @State private var showingAddClient = false
     
     var filteredClients: [ClientModel] {
         if searchText.isEmpty {
@@ -78,6 +86,7 @@ struct ClientsView: View {
         .navigationTitle("Clients")
         .overlay(
             ZStack {
+                FloatingActionButton(action: { self.showingAddClient = true})
                 if viewModel.isLoading {
                     Color.gray.opacity(0.7)
                         .ignoresSafeArea()
@@ -86,11 +95,41 @@ struct ClientsView: View {
                 }
             }
         )
+        .sheet(
+            isPresented: $showingAddClient,
+            onDismiss: { self.viewModel.getClients() },
+            content: { AddClientView() }
+        )
+        .onAppear {
+            self.viewModel.getClients()
+        }
     }
 }
 
 struct ClientsView_Previews: PreviewProvider {
     static var previews: some View {
         ClientsView(viewModelFilter: FilterViewModel(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción")))
+    }
+}
+
+struct FloatingActionButton: View {
+    var action: () -> Void
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Button(action: action) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(Color.blue)
+                .clipShape(Circle())
+                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+            }
+        }.padding(.horizontal)
     }
 }
