@@ -1,5 +1,5 @@
 //
-//  RestaurantsViewModel.swift
+//  ClientsViewModel.swift
 //  Reservation
 //
 //  Created by Victor Ayala  on 2023-05-09.
@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-class RestaurantsViewModel: ObservableObject {
-    @Published var restaurants = [RestaurantModel]()
+class ClienstViewModel: ObservableObject {
+    @Published var clients = [ClientModel]()
     
     init() {
-        self.getRestaurants()
+        self.getClients()
     }
     
-    private func getRestaurants() {
+    private func getClients() {
         APIClient.apiRequest(
             method: .get,
-            api: .restaurant(""),
+            api: .client(""),
             encoding: .default,
-            successHandler: { (restaurants: [RestaurantModel]) in
-                self.restaurants = restaurants
+            successHandler: { (clients: [ClientModel]) in
+                self.clients = clients
             },
             errorHandler: { (error: ErrorModel) in
                 return false // Unknown error, use default error handler.
@@ -28,4 +28,3 @@ class RestaurantsViewModel: ObservableObject {
         )
     }
 }
-

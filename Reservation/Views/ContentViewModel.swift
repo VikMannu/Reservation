@@ -13,7 +13,7 @@ class ContentViewModel: ObservableObject {
             method: .get,
             api: .restaurant(""),
             encoding: .default,
-            successHandler: { (restaurants: [Restaurant]) in
+            successHandler: { (restaurants: [RestaurantModel]) in
                 print(restaurants)
             },
             errorHandler: { (error: ErrorModel) in

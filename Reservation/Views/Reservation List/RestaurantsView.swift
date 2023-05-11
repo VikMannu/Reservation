@@ -13,7 +13,7 @@ struct RestaurantsView: View {
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
     
-    var filteredRestaurants: [Restaurant] {
+    var filteredRestaurants: [RestaurantModel] {
         if searchText.isEmpty {
             return viewModel.restaurants
         } else {
@@ -30,7 +30,7 @@ struct RestaurantsView: View {
                         Image(systemName: "magnifyingglass")
                         
                         TextField(
-                            "Buscar",
+                            "Search",
                             text: $searchText,
                             onEditingChanged: { isEditing in
                                 self.showCancelButton = true
@@ -49,7 +49,7 @@ struct RestaurantsView: View {
                     .cornerRadius(10.0)
                     
                     if showCancelButton  {
-                        Button("Cancelar") {
+                        Button("Cancel") {
                             UIApplication.shared.endEditing(true)
                             self.searchText = ""
                             self.showCancelButton = false
@@ -62,11 +62,11 @@ struct RestaurantsView: View {
                 
                 // List view
                 List(filteredRestaurants, id: \.id) { restaurant in
-                    NavigationLink(destination: Text(restaurant.id ?? "")) {
+                    NavigationLink(destination: FilterView(restaurant: restaurant)) {
                         Text(restaurant.name ?? "")
                     }
                 }
-            }.navigationBarTitle(Text("Restaurantes"))
+            }.navigationBarTitle(Text("Restaurants"))
         }
     }
 }

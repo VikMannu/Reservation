@@ -31,12 +31,15 @@
 		F66F5B912A09F91F0017F322 /* ReservationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5B902A09F91F0017F322 /* ReservationUITests.swift */; };
 		F66F5B932A09F91F0017F322 /* ReservationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66F5B922A09F91F0017F322 /* ReservationUITestsLaunchTests.swift */; };
 		F6DCB19E2A0A788000E2D7F1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB19D2A0A788000E2D7F1 /* ContentViewModel.swift */; };
-		F6DCB1A02A0A7A0E00E2D7F1 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB19F2A0A7A0E00E2D7F1 /* Restaurant.swift */; };
+		F6DCB1A02A0A7A0E00E2D7F1 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB19F2A0A7A0E00E2D7F1 /* RestaurantModel.swift */; };
 		F6DCB1A22A0A8E7900E2D7F1 /* RestaurantsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A12A0A8E7900E2D7F1 /* RestaurantsView.swift */; };
 		F6DCB1A42A0A8E9C00E2D7F1 /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A32A0A8E9C00E2D7F1 /* RestaurantsViewModel.swift */; };
 		F6DCB1A62A0A938000E2D7F1 /* UIApplication+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A52A0A938000E2D7F1 /* UIApplication+Helpers.swift */; };
 		F6DCB1A82A0A998400E2D7F1 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A72A0A998300E2D7F1 /* FilterView.swift */; };
 		F6DCB1AA2A0A999800E2D7F1 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A92A0A999800E2D7F1 /* FilterViewModel.swift */; };
+		F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */; };
+		F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */; };
+		F6EAFC362A0ADD9D003F9594 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,12 +92,15 @@
 		F66F5B902A09F91F0017F322 /* ReservationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationUITests.swift; sourceTree = "<group>"; };
 		F66F5B922A09F91F0017F322 /* ReservationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F6DCB19D2A0A788000E2D7F1 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		F6DCB19F2A0A7A0E00E2D7F1 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		F6DCB19F2A0A7A0E00E2D7F1 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		F6DCB1A12A0A8E7900E2D7F1 /* RestaurantsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsView.swift; sourceTree = "<group>"; };
 		F6DCB1A32A0A8E9C00E2D7F1 /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
 		F6DCB1A52A0A938000E2D7F1 /* UIApplication+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Helpers.swift"; sourceTree = "<group>"; };
 		F6DCB1A72A0A998300E2D7F1 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F6DCB1A92A0A999800E2D7F1 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
+		F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
+		F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
 		F89C3DEE8E98BCEE9AAA0571 /* Pods-Reservation-ReservationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reservation-ReservationUITests.release.xcconfig"; path = "Target Support Files/Pods-Reservation-ReservationUITests/Pods-Reservation-ReservationUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,7 +186,8 @@
 			children = (
 				F66F5B792A09F91E0017F322 /* Persistence.swift */,
 				F66F5B7B2A09F91E0017F322 /* Reservation.xcdatamodeld */,
-				F6DCB19F2A0A7A0E00E2D7F1 /* Restaurant.swift */,
+				F6DCB19F2A0A7A0E00E2D7F1 /* RestaurantModel.swift */,
+				F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -250,6 +257,8 @@
 				F6DCB1A32A0A8E9C00E2D7F1 /* RestaurantsViewModel.swift */,
 				F6DCB1A72A0A998300E2D7F1 /* FilterView.swift */,
 				F6DCB1A92A0A999800E2D7F1 /* FilterViewModel.swift */,
+				F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */,
+				F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */,
 			);
 			path = "Reservation List";
 			sourceTree = "<group>";
@@ -565,13 +574,16 @@
 				F66F5B7D2A09F91E0017F322 /* Reservation.xcdatamodeld in Sources */,
 				F6DCB1A22A0A8E7900E2D7F1 /* RestaurantsView.swift in Sources */,
 				F65F56D42A0A01CE00F7580A /* Singleton.swift in Sources */,
+				F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */,
 				F6DCB19E2A0A788000E2D7F1 /* ContentViewModel.swift in Sources */,
 				F65F56CF2A0A017A00F7580A /* Constans.swift in Sources */,
 				F65F56C02A09FB8200F7580A /* APIClient.swift in Sources */,
+				F6EAFC362A0ADD9D003F9594 /* ClientsViewModel.swift in Sources */,
 				F65F56C82A0A000300F7580A /* Encodable+Helpers.swift in Sources */,
+				F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */,
 				F65F56CA2A0A002400F7580A /* JSONDecoder+Helpers.swift in Sources */,
 				F65F56C32A09FC1300F7580A /* HTTPArrayEncoding.swift in Sources */,
-				F6DCB1A02A0A7A0E00E2D7F1 /* Restaurant.swift in Sources */,
+				F6DCB1A02A0A7A0E00E2D7F1 /* RestaurantModel.swift in Sources */,
 				F66F5B712A09F91D0017F322 /* ReservationApp.swift in Sources */,
 				F6DCB1A62A0A938000E2D7F1 /* UIApplication+Helpers.swift in Sources */,
 				F65F56D22A0A01C500F7580A /* Utils.swift in Sources */,
