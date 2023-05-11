@@ -21,19 +21,19 @@ struct FilterView: View {
             Divider()
                 .foregroundColor(Color.blue)
             ZStack(alignment: .center, content: {
-                HStack {
-                    NavigationLink(
-                        destination: { ClientsView(viewModelFilter: viewModel) },
-                        label: {
+                NavigationLink(
+                    destination: { ClientsView(viewModelFilter: viewModel) },
+                    label: {
+                        HStack {
                             TextField("Select Client", text: $viewModel.selectedClientTitle)
                                 .padding(.horizontal)
+                            
+                            Image(systemName: "arrow.right")
+                                .padding(.horizontal)
+                                .foregroundColor(Color.gray)
                         }
-                    )
-                    
-                    Image(systemName: "arrow.right")
-                        .padding(.horizontal)
-                        .foregroundColor(Color.gray)
-                }
+                    }
+                )
             })
             .foregroundColor(.gray)
             .frame(height: 40)
