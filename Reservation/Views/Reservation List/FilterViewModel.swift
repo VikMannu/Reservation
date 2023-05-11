@@ -8,6 +8,8 @@
 import SwiftUI
 
 class FilterViewModel: ObservableObject {
+    @Published var isLoading = false
+    
     private let restaurant: RestaurantModel
     
     var selectedClient: ClientModel?

@@ -55,7 +55,18 @@ struct FilterView: View {
             Divider()
                 .foregroundColor(Color.blue)
             Spacer()
-        }.navigationTitle("Reservations") // main VStacka
+        } // Main VStack
+        .navigationTitle("Reservations")
+        .overlay(
+            ZStack {
+                if viewModel.isLoading {
+                    Color.gray.opacity(0.7)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+            }
+        )
     } // Body
 }
 

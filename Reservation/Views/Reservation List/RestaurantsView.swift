@@ -68,6 +68,16 @@ struct RestaurantsView: View {
                 }
             }.navigationBarTitle(Text("Restaurants"))
         }
+        .overlay(
+            ZStack {
+                if viewModel.isLoading {
+                    Color.gray.opacity(0.7)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+            }
+        )
     }
 }
 

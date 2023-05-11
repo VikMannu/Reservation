@@ -8,6 +8,8 @@
 import SwiftUI
 
 class ClienstViewModel: ObservableObject {
+    @Published var isLoading = false
+    
     @Published var clients = [ClientModel]()
     
     init() {
@@ -15,14 +17,17 @@ class ClienstViewModel: ObservableObject {
     }
     
     private func getClients() {
+        self.isLoading = true
         APIClient.apiRequest(
             method: .get,
             api: .client(""),
             encoding: .default,
             successHandler: { (clients: [ClientModel]) in
                 self.clients = clients
+                self.isLoading = false
             },
             errorHandler: { (error: ErrorModel) in
+                self.isLoading = false
                 return false // Unknown error, use default error handler.
             }
         )

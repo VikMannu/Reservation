@@ -74,7 +74,18 @@ struct ClientsView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
             }
-        }.navigationTitle("Clients")
+        } // Main VStack
+        .navigationTitle("Clients")
+        .overlay(
+            ZStack {
+                if viewModel.isLoading {
+                    Color.gray.opacity(0.7)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+            }
+        )
     }
 }
 
