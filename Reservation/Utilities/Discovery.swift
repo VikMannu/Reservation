@@ -15,10 +15,12 @@ struct Discovery {
         let service1 = ServiceAPIModel(service: "reserva", location: "http://localhost:9090/api")
         let service2 = ServiceAPIModel(service: "restaurante", location: "http://localhost:9090/api")
         let service3 = ServiceAPIModel(service: "cliente", location: "http://localhost:9090/api")
+        let service4 = ServiceAPIModel(service: "services", location: "http://localhost:9090/api")
         self.services = []
         self.services?.append(service1)
         self.services?.append(service2)
         self.services?.append(service3)
+        self.services?.append(service4)
     }
 }
 
@@ -40,6 +42,7 @@ enum DiscoveryAPI {
     case reservation(String)
     case restaurant(String)
     case client(String)
+    case services(String)
 
     /// The API identifier used by the discovery service.
     var urlString: String? {
@@ -54,6 +57,9 @@ enum DiscoveryAPI {
             command = cmd
         case .client(let cmd):
             serv = "cliente"
+            command = cmd
+        case .services(let cmd):
+            serv = "services"
             command = cmd
         }
         

@@ -15,7 +15,7 @@ class AddClientViewModel: ObservableObject {
         APIClient.apiRequest(
             method: .post,
             api: .client(""),
-            parameters: client.rsk_dictionary ?? ["": ""],
+            parameters: client.dictionary ?? ["": ""],
             successHandler: { (client: ClientModel) in
                 self.isLoading = false
             },

@@ -7,15 +7,27 @@
 
 import Foundation
 
-struct RequestAvailableHoursModel: Codable {
+struct RequestAvailableSchedulesModel: Codable {
     let restaurantId: String
     let date: Date
-    let hours: [Time]
+    let schedules: [Schedule]
     
     enum CodingKeys: String, CodingKey {
         case restaurantId = "RestauranteId"
-        case date = "fecha"
-        case hours = "listaHoras"
+        case dateISO8601 = "fecha"
+        case schedules = "listaHoras"
+    }
+    
+    init() {
+        self.restaurantId = "1"
+        self.date = Date()
+        self.schedules = [Schedule(startTime: 14, endTime: 15), Schedule(startTime: 15, endTime: 16)]
+    }
+    
+    init(restaurantId: String, date: Date, schedules: [Schedule]) {
+        self.restaurantId = restaurantId
+        self.date = date
+        self.schedules = schedules
     }
     
     init(from decoder: Decoder) throws {
@@ -24,8 +36,8 @@ struct RequestAvailableHoursModel: Codable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd zzz"
         dateFormatter.timeZone = TimeZone.current
-        date = try dateFormatter.date(from: container.decode(String.self, forKey: .date)) ?? Date()
-        hours = try container.decode([Time].self, forKey: .hours)
+        date = try dateFormatter.date(from: container.decode(String.self, forKey: .dateISO8601)) ?? Date()
+        schedules = try container.decode([Schedule].self, forKey: .schedules)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -34,13 +46,12 @@ struct RequestAvailableHoursModel: Codable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd zzz"
         dateFormatter.timeZone = TimeZone.current
-        try container.encode(dateFormatter.string(from: date), forKey: .date)
-        try container.encode(date, forKey: .date)
-        try container.encode(hours, forKey: .hours)
+        try container.encode(dateFormatter.string(from: date), forKey: .dateISO8601)
+        try container.encode(schedules, forKey: .schedules)
     }
 }
 
-struct Time: Codable, Identifiable {
+struct Schedule: Codable, Identifiable {
     let id = UUID()
     let startTime: Int
     let endTime: Int

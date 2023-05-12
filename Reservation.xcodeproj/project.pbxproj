@@ -10,7 +10,12 @@
 		60A56B837F91A6E8C613FEDC /* Pods_Reservation_ReservationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF57F06FCC04417E54669E45 /* Pods_Reservation_ReservationUITests.framework */; };
 		736356BAEBDF13EA653E6714 /* Pods_ReservationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E58AC458C8F67C6A2BDA278 /* Pods_ReservationTests.framework */; };
 		A1F3F8AC4AD8810AA4C6602E /* Pods_Reservation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1714561D8AA76A6276743ECC /* Pods_Reservation.framework */; };
-		F60DE6D92A0E926900CDC033 /* RequestAvailableHoursModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6D82A0E926900CDC033 /* RequestAvailableHoursModel.swift */; };
+		F60DE6D92A0E926900CDC033 /* RequestAvailableSchedulesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6D82A0E926900CDC033 /* RequestAvailableSchedulesModel.swift */; };
+		F60DE6DB2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6DA2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift */; };
+		F60DE6DD2A0ECADB00CDC033 /* AvailableSchedulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6DC2A0ECADB00CDC033 /* AvailableSchedulesView.swift */; };
+		F60DE6DF2A0EFC4A00CDC033 /* ConfirmationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6DE2A0EFC4A00CDC033 /* ConfirmationTableView.swift */; };
+		F60DE6E12A0EFD2500CDC033 /* ConfirmationTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6E02A0EFD2500CDC033 /* ConfirmationTableViewModel.swift */; };
+		F60DE6E32A0F01DD00CDC033 /* ResponseReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60DE6E22A0F01DD00CDC033 /* ResponseReservationModel.swift */; };
 		F65F56C02A09FB8200F7580A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F56BF2A09FB8200F7580A /* APIClient.swift */; };
 		F65F56C32A09FC1300F7580A /* HTTPArrayEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F56C22A09FC1300F7580A /* HTTPArrayEncoding.swift */; };
 		F65F56C52A09FC9500F7580A /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F56C42A09FC9500F7580A /* ErrorModel.swift */; };
@@ -75,7 +80,12 @@
 		6E58AC458C8F67C6A2BDA278 /* Pods_ReservationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReservationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF57F06FCC04417E54669E45 /* Pods_Reservation_ReservationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reservation_ReservationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE61DE0C7C0E073C12CA037 /* Pods-ReservationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReservationTests.debug.xcconfig"; path = "Target Support Files/Pods-ReservationTests/Pods-ReservationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F60DE6D82A0E926900CDC033 /* RequestAvailableHoursModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAvailableHoursModel.swift; sourceTree = "<group>"; };
+		F60DE6D82A0E926900CDC033 /* RequestAvailableSchedulesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAvailableSchedulesModel.swift; sourceTree = "<group>"; };
+		F60DE6DA2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableSchedulesViewModel.swift; sourceTree = "<group>"; };
+		F60DE6DC2A0ECADB00CDC033 /* AvailableSchedulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableSchedulesView.swift; sourceTree = "<group>"; };
+		F60DE6DE2A0EFC4A00CDC033 /* ConfirmationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationTableView.swift; sourceTree = "<group>"; };
+		F60DE6E02A0EFD2500CDC033 /* ConfirmationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationTableViewModel.swift; sourceTree = "<group>"; };
+		F60DE6E22A0F01DD00CDC033 /* ResponseReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseReservationModel.swift; sourceTree = "<group>"; };
 		F65F56BF2A09FB8200F7580A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F65F56C22A09FC1300F7580A /* HTTPArrayEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPArrayEncoding.swift; sourceTree = "<group>"; };
 		F65F56C42A09FC9500F7580A /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
@@ -204,7 +214,8 @@
 				F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */,
 				F6D526622A0DDDE800C297F7 /* TableModel.swift */,
 				F6D526602A0DDB0E00C297F7 /* ReservationModel.swift */,
-				F60DE6D82A0E926900CDC033 /* RequestAvailableHoursModel.swift */,
+				F60DE6D82A0E926900CDC033 /* RequestAvailableSchedulesModel.swift */,
+				F60DE6E22A0F01DD00CDC033 /* ResponseReservationModel.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -267,6 +278,10 @@
 			children = (
 				F6B724682A0D6C8C00EC8437 /* ReservationDateSelectorView.swift */,
 				F6B7246A2A0D6CA200EC8437 /* ReservationDateSelectorViewModel.swift */,
+				F60DE6DC2A0ECADB00CDC033 /* AvailableSchedulesView.swift */,
+				F60DE6DA2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift */,
+				F60DE6DE2A0EFC4A00CDC033 /* ConfirmationTableView.swift */,
+				F60DE6E02A0EFD2500CDC033 /* ConfirmationTableViewModel.swift */,
 			);
 			path = "Table Reservation";
 			sourceTree = "<group>";
@@ -613,7 +628,8 @@
 				F6DCB1A22A0A8E7900E2D7F1 /* RestaurantsView.swift in Sources */,
 				F65F56D42A0A01CE00F7580A /* Singleton.swift in Sources */,
 				F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */,
-				F60DE6D92A0E926900CDC033 /* RequestAvailableHoursModel.swift in Sources */,
+				F60DE6DD2A0ECADB00CDC033 /* AvailableSchedulesView.swift in Sources */,
+				F60DE6D92A0E926900CDC033 /* RequestAvailableSchedulesModel.swift in Sources */,
 				F6DCB19E2A0A788000E2D7F1 /* ContentViewModel.swift in Sources */,
 				F65F56CF2A0A017A00F7580A /* Constans.swift in Sources */,
 				F6D526612A0DDB0E00C297F7 /* ReservationModel.swift in Sources */,
@@ -622,13 +638,17 @@
 				F6B7246B2A0D6CA200EC8437 /* ReservationDateSelectorViewModel.swift in Sources */,
 				F65F56C82A0A000300F7580A /* Encodable+Helpers.swift in Sources */,
 				F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */,
+				F60DE6DF2A0EFC4A00CDC033 /* ConfirmationTableView.swift in Sources */,
+				F60DE6E12A0EFD2500CDC033 /* ConfirmationTableViewModel.swift in Sources */,
 				F6B7246F2A0D82DA00EC8437 /* AddClientView.swift in Sources */,
 				F6B724712A0D82EE00EC8437 /* AddClientViewModel.swift in Sources */,
 				F65F56CA2A0A002400F7580A /* JSONDecoder+Helpers.swift in Sources */,
 				F65F56C32A09FC1300F7580A /* HTTPArrayEncoding.swift in Sources */,
+				F60DE6DB2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift in Sources */,
 				F6DCB1A02A0A7A0E00E2D7F1 /* RestaurantModel.swift in Sources */,
 				F66F5B712A09F91D0017F322 /* ReservationApp.swift in Sources */,
 				F6DCB1A62A0A938000E2D7F1 /* UIApplication+Helpers.swift in Sources */,
+				F60DE6E32A0F01DD00CDC033 /* ResponseReservationModel.swift in Sources */,
 				F6D526632A0DDDE800C297F7 /* TableModel.swift in Sources */,
 				F65F56D22A0A01C500F7580A /* Utils.swift in Sources */,
 			);

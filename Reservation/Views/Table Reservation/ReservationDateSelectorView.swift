@@ -27,13 +27,19 @@ struct ReservationDateSelectorView: View {
                 in: currentDate...,
                 displayedComponents: [.date]
             )
-            List(Array(viewModel.hours.enumerated()), id: \.offset) { index, hour in
+            List(Array(viewModel.schedules.enumerated()), id: \.offset) { index, schedule in
                 if isEditing {
-                    RowTime(item: $viewModel.hours[index], isEditing: isEditing)
+                    RowTime(item: $viewModel.schedules[index], isEditing: isEditing)
                 } else {
                     NavigationLink(
-                        destination: Text("Hello"),
-                        label: { RowTime(item: $viewModel.hours[index], isEditing: false) }
+                        destination: AvailableSchedulesView(
+                            availableSchedule: RequestAvailableSchedulesModel(
+                                restaurantId: viewModel.restaurant.id ?? "",
+                                date: viewModel.selectedDate,
+                                schedules: [schedule]
+                            )
+                        ),
+                        label: { RowTime(item: $viewModel.schedules[index], isEditing: false) }
                     )
                 }
             }.listStyle(.plain)
@@ -50,7 +56,13 @@ struct ReservationDateSelectorView: View {
                     )
             }
             NavigationLink(
-                destination: Text("Hello"),
+                destination: AvailableSchedulesView(
+                    availableSchedule: RequestAvailableSchedulesModel(
+                        restaurantId: viewModel.restaurant.id ?? "",
+                        date: viewModel.selectedDate,
+                        schedules: viewModel.getSelectedSchedules()
+                    )
+                ),
                 isActive: $nextView,
                 label: { EmptyView() }
             )
@@ -71,6 +83,16 @@ struct ReservationDateSelectorView: View {
                 )
         )
         .environment(\.editMode, isEditing ? .constant(.active) : .constant(.inactive))
+        .overlay(
+            ZStack {
+                if viewModel.isLoading {
+                    Color.gray.opacity(0.7)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+            }
+        )
     }
     
     private func nagivationNextView() {
@@ -92,7 +114,7 @@ struct HoursAvailableView_Previews: PreviewProvider {
 }
 
 struct RowTime: View {
-    @Binding var item: Time
+    @Binding var item: Schedule
     let isEditing: Bool
     
     var body: some View {

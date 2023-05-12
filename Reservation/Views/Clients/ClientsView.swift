@@ -8,14 +8,15 @@
 import SwiftUI
 
 enum BackClient {
-    case filterView
-    case hoursAvailableView
+    case reservationsView
+    case availableSchedulesView
 }
 
 struct ClientsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var viewModelFilter: ReservationsViewModel
+    @ObservedObject var viewModelFilterReservations: ReservationsViewModel
+    @ObservedObject var viewModelFilterAvailableShedules: AvailableSchedulesViewModel
     @StateObject var viewModel = ClienstViewModel()
     
     @State private var searchText = ""
@@ -23,6 +24,20 @@ struct ClientsView: View {
     @State private var isPresented = false
     
     @State private var showingAddClient = false
+    
+    let backClient: BackClient
+    
+    init(viewModelFilter: ReservationsViewModel) {
+        self.backClient = .reservationsView
+        self.viewModelFilterReservations = viewModelFilter
+        self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
+    }
+    
+    init(viewModelFilter: AvailableSchedulesViewModel) {
+        self.backClient = .availableSchedulesView
+        self.viewModelFilterAvailableShedules = viewModelFilter
+        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: "", name: "", address: ""))
+    }
     
     var filteredClients: [ClientModel] {
         if searchText.isEmpty {
@@ -77,8 +92,14 @@ struct ClientsView: View {
             List(filteredClients, id: \.id) { client in
                 Text("\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")")
                     .onTapGesture {
-                        viewModelFilter.selectedClientTitle = "\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")"
-                        viewModelFilter.selectedClient = client
+                        let titleClient = "\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")"
+                        if backClient == .reservationsView {
+                            viewModelFilterReservations.selectedClient = client
+                            viewModelFilterReservations.selectedClientTitle = titleClient
+                        } else {
+                            viewModelFilterAvailableShedules.selectedClient = client
+                            viewModelFilterAvailableShedules.selectedClientTitle = titleClient
+                        }
                         presentationMode.wrappedValue.dismiss()
                     }
             }

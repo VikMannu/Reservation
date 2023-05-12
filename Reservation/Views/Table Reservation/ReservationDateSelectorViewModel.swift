@@ -8,30 +8,35 @@
 import Foundation
 
 class ReservationDateSelectorViewModel: ObservableObject {
+    @Published var isLoading = false
     @Published var selectedDate = Date()
     
-    private let restaurant: RestaurantModel
-    @Published var hours = [Time]()
+    let restaurant: RestaurantModel
+    @Published var schedules = [Schedule]()
     
     init(restaurant: RestaurantModel) {
         self.restaurant = restaurant
-        self.hours = loadHours()
+        self.schedules = loadSchedules()
     }
     
-    private func loadHours() -> [Time] {
-        var hours = [Time]()
+    private func loadSchedules() -> [Schedule] {
+        var schedules = [Schedule]()
         
         for index in 12...22 {
-            hours.append(Time(startTime: index, endTime: index+1))
+            schedules.append(Schedule(startTime: index, endTime: index+1))
         }
         
-        return hours
+        return schedules
     }
     
     func isAtLeastOneItemSelected() -> Bool {
-        if let _ = hours.first(where: { $0.isSelected }) {
+        if let _ = schedules.first(where: { $0.isSelected }) {
             return true
         }
         return false
+    }
+    
+    func getSelectedSchedules() -> [Schedule] {
+        return self.schedules.filter({ $0.isSelected })
     }
 }

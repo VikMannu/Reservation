@@ -10,7 +10,9 @@ import Alamofire
 class StringEncoding: ParameterEncoding {
     func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var urlRequest = try urlRequest.asURLRequest()
-        urlRequest.httpBody = (parameters!["0"] as! String).data(using: .utf8)
+        if let paramValue = parameters?["0"] as? String {
+            urlRequest.httpBody = paramValue.data(using: .utf8)
+        }
         return urlRequest
     }
 }
