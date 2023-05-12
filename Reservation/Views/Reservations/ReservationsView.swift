@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct FilterView: View {
-    @StateObject var viewModel: FilterViewModel
+struct ReservationsView: View {
+    @StateObject var viewModel: ReservationsViewModel
     
     private let currentDate = Date()
     
     init(restaurant: RestaurantModel) {
-        self._viewModel = StateObject(wrappedValue: FilterViewModel(restaurant: restaurant))
+        self._viewModel = StateObject(wrappedValue: ReservationsViewModel(restaurant: restaurant))
     }
     
     var body: some View {
@@ -52,9 +52,15 @@ struct FilterView: View {
                 displayedComponents: [.date]
             )
             .padding(.horizontal)
+            .onChange(of: viewModel.selectedDate) { newDate in
+                viewModel.getReservations()
+            }
+            
             Divider()
                 .foregroundColor(Color.blue)
-            Spacer()
+            List(viewModel.reservations, id: \.id) { reservation in
+                Text(reservation.table?.name ?? "")
+            }
         } // Main VStack
         .navigationTitle("Reservations")
         .overlay(
@@ -67,11 +73,14 @@ struct FilterView: View {
                 }
             }
         )
+        .onAppear {
+            viewModel.getReservations()
+        }
     } // Body
 }
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción"))
+        ReservationsView(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción"))
     }
 }

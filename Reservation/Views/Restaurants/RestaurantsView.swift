@@ -74,7 +74,7 @@ struct RestaurantsView: View {
                 // List view
                 List(filteredRestaurants, id: \.id) { restaurant in
                     if self.restaurantDestination == .filterView {
-                        NavigationLink(destination: FilterView(restaurant: restaurant)) {
+                        NavigationLink(destination: ReservationsView(restaurant: restaurant)) {
                             Text(restaurant.name ?? "")
                         }
                     } else {

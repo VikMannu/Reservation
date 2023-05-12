@@ -15,7 +15,7 @@ enum BackClient {
 struct ClientsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var viewModelFilter: FilterViewModel
+    @ObservedObject var viewModelFilter: ReservationsViewModel
     @StateObject var viewModel = ClienstViewModel()
     
     @State private var searchText = ""
@@ -108,7 +108,7 @@ struct ClientsView: View {
 
 struct ClientsView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientsView(viewModelFilter: FilterViewModel(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción")))
+        ClientsView(viewModelFilter: ReservationsViewModel(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción")))
     }
 }
 

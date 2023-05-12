@@ -41,7 +41,7 @@ struct APIClient {
     // Custom logger for this API Client
     static let logger = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "APIClient")
     // Default error when error type is not recognized
-    static let errorCustom = ErrorModel.init(useApiMessage: false, message: "", code: "")
+    static let errorCustom = ErrorModel.init(message: "")
     
     // DICTIONARY PARAMETERS REQUEST.
     @discardableResult
@@ -74,7 +74,7 @@ struct APIClient {
         
         guard NetworkReachabilityManager()?.isReachable == true else {
             os_log("No internet connection", log: logger)
-            let error = ErrorModel(useApiMessage: true, message: ErrorModel.networkMessage, code: "0")
+            let error = ErrorModel(message: ErrorModel.networkMessage)
             if !(errorHandler?(error) ?? false) {
                 Utils.showBarnner(title: "Error de conexion", subtitle: error.getMessage())
             }
@@ -92,17 +92,9 @@ struct APIClient {
                 Utils.showBarnner(title: "Error Decode", subtitle: errorCustom.getMessage())
                 return
             }
-
-            switch error.code {
-            case "a1100":
-                os_log("Session expiration", log: logger)
-                Utils.showBarnner(title: "Session expirarion", subtitle: error.getMessage())
-                break
-            default:
-                os_log("Default message error", logger)
-                Utils.showBarnner(title: "Error", subtitle: error.getMessage())
-                break
-            }
+            
+            os_log("Default message error", logger)
+            Utils.showBarnner(title: "Error", subtitle: error.getMessage())
         }
         
         let handleError = { (data: Data?) in
