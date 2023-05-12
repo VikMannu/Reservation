@@ -78,7 +78,7 @@ struct RestaurantsView: View {
                             Text(restaurant.name ?? "")
                         }
                     } else {
-                        NavigationLink(destination: HoursAvailableView()) {
+                        NavigationLink(destination: ReservationDateSelectorView(restaurant: restaurant)) {
                             Text(restaurant.name ?? "")
                         }
                     }
@@ -95,6 +95,9 @@ struct RestaurantsView: View {
                 }
             }
         )
+        .onAppear {
+            viewModel.getRestaurants()
+        }
     }
 }
 

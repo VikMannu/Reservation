@@ -12,11 +12,7 @@ class RestaurantsViewModel: ObservableObject {
     
     @Published var restaurants = [RestaurantModel]()
     
-    init() {
-        self.getRestaurants()
-    }
-    
-    private func getRestaurants() {
+    func getRestaurants() {
         self.isLoading = true
         APIClient.apiRequest(
             method: .get,
