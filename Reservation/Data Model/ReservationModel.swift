@@ -55,7 +55,6 @@ struct TimeRange: Codable {
     let value: Date?
     let include: Bool?
     
-    
     enum CodingKeys: String, CodingKey {
         case dateISO8601 = "value"
         case include = "inclusive"
@@ -63,8 +62,11 @@ struct TimeRange: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let formatter = ISO8601DateFormatter()
-        value = try formatter.date(from: container.decode(String.self, forKey: .dateISO8601))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        let stringDate = try container.decode(String.self, forKey: .dateISO8601)
+        value = formatter.date(from: stringDate)
         include = try container.decode(Bool.self, forKey: .include)
     }
     

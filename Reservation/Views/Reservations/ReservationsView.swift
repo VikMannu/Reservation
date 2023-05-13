@@ -10,10 +10,18 @@ import SwiftUI
 struct ReservationsView: View {
     @StateObject var viewModel: ReservationsViewModel
     
+    let formatter = DateFormatter()
+    
     private let currentDate = Date()
+    private let minDate: Date
+    private let maxDate: Date
+
     
     init(restaurant: RestaurantModel) {
         self._viewModel = StateObject(wrappedValue: ReservationsViewModel(restaurant: restaurant))
+        formatter.timeStyle = .short
+        minDate = Calendar.current.date(byAdding: .year, value: -123, to: currentDate)!
+        maxDate = Calendar.current.date(byAdding: .year, value: 177, to: currentDate)!
     }
     
     var body: some View {
@@ -48,7 +56,7 @@ struct ReservationsView: View {
             DatePicker(
                 "Select date:",
                 selection: $viewModel.selectedDate,
-                in: ...currentDate,
+                in: minDate...maxDate,
                 displayedComponents: [.date]
             )
             .padding(.horizontal)
@@ -59,7 +67,25 @@ struct ReservationsView: View {
             Divider()
                 .foregroundColor(Color.blue)
             List(viewModel.reservations, id: \.id) { reservation in
-                Text(reservation.table?.name ?? "")
+                VStack {
+                    Text(viewModel.restaurant.name ?? "")
+                        .foregroundColor(Color.blue)
+                        .fontWeight(.bold)
+                    RowTableMin(table: reservation.table ?? TableModel())
+                    VStack {
+                        Text("Client")
+                            .foregroundColor(Color.blue)
+                            .fontWeight(.bold)
+                        Text("\(reservation.client?.name ?? "") \(reservation.client?.surname ?? "")")
+                    }
+                    Text("Schedule")
+                        .foregroundColor(Color.blue)
+                        .fontWeight(.bold)
+                    HStack(spacing: 10) {
+                        Text(formatter.string(from: reservation.timeRange?[0].value ?? Date()))
+                        Text(formatter.string(from: reservation.timeRange?[1].value ?? Date()))
+                    }
+                }
             }
         } // Main VStack
         .navigationTitle("Reservations")

@@ -44,9 +44,8 @@ struct ReservationDateSelectorView: View {
                 }
             }.listStyle(.plain)
             if isEditing {
-                Button("Siguiente", action: { self.nagivationNextView() })
+                Button("Following", action: { self.nagivationNextView() })
                     .foregroundColor(.white)
-                    .padding(.all)
                     .frame(maxWidth: .infinity, maxHeight: 36)
                     .background(Color.blue)
                     .cornerRadius(10)
@@ -54,6 +53,8 @@ struct ReservationDateSelectorView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.blue, lineWidth: 2)
                     )
+                
+                    .padding(.all).padding(.bottom, 20)
             }
             NavigationLink(
                 destination: AvailableSchedulesView(

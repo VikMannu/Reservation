@@ -25,4 +25,25 @@ struct TableModel: Codable {
         case diners = "comensales"
         case restaurantId = "RestauranteId"
     }
+    
+    init() {
+        self.id = "1"
+        self.name = ""
+        self.positionX = 1
+        self.positionY = 1
+        self.floor = 1
+        self.diners = 1
+        self.restaurantId = "1"
+    }
+    
+    init(id: String?, name: String?, positionX: Int?, positionY: Int?, floor: Int?, diners: Int?, restaurantId: String?) {
+        self.id = id
+        self.name = name
+        self.positionX = positionX
+        self.positionY = positionY
+        self.floor = floor
+        self.diners = diners
+        self.restaurantId = restaurantId
+    }
+    
 }

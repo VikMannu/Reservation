@@ -97,3 +97,26 @@ struct RowTable: View {
         }.padding(.horizontal)
     }
 }
+
+struct RowTableMin: View {
+    let table: TableModel
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text(table.name ?? "")
+                .foregroundColor(Color.blue)
+                .fontWeight(.bold)
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("PositionX: \(table.positionX ?? 0)")
+                    Text("Floor: \(table.floor ?? 0)")
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 5) {
+                    Text("PositionY: \(table.positionY ?? 0)")
+                    Text("Diners: \(table.diners ?? 0)")
+                }
+            }.padding(.horizontal)
+        }.padding(.horizontal)
+    }
+}

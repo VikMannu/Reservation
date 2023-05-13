@@ -10,7 +10,7 @@ import SwiftUI
 class ReservationsViewModel: ObservableObject {
     @Published var isLoading = false
     
-    private let restaurant: RestaurantModel
+    let restaurant: RestaurantModel
     
     var selectedClient: ClientModel?
     
