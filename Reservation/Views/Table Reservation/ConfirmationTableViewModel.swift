@@ -56,6 +56,7 @@ class ConfirmationTableViewModel: ObservableObject {
                 parameters: response.dictionary ?? ["":""],
                 encoding: .json,
                 successHandler: { (reservation: ReservationModel) in
+                    Utils.showBarnner(title: "Reservation added successfully", subtitle: "Added the reservation for \(reservation.quantity ?? 0) people in the name of \(reservation.client?.name ?? "")")
                     dispatch.leave()
                 },
                 errorHandler: { (error: ErrorModel) in
