@@ -26,7 +26,7 @@ struct AddClientView: View {
             
             Button(
                 action: {
-                    viewModel.addClient(with: ClientModel(id: nil, name: name, surname: surname, ci: ci))
+                    viewModel.addClient(with: ClientModel(name: name, surname: surname, ci: ci))
                     self.presentationMode.wrappedValue.dismiss()
                 },
                 label: {

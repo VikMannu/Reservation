@@ -107,6 +107,6 @@ struct ReservationsView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservationsView(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción"))
+        ReservationsView(restaurant: RestaurantModel(id: 1, name: "Lido Bar", address: "Asunción"))
     }
 }

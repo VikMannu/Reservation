@@ -34,7 +34,7 @@ struct ReservationDateSelectorView: View {
                     NavigationLink(
                         destination: AvailableSchedulesView(
                             availableSchedule: RequestAvailableSchedulesModel(
-                                restaurantId: viewModel.restaurant.id ?? "",
+                                restaurantId: viewModel.restaurant.id ?? 0,
                                 date: viewModel.selectedDate,
                                 schedules: [schedule]
                             )
@@ -59,7 +59,7 @@ struct ReservationDateSelectorView: View {
             NavigationLink(
                 destination: AvailableSchedulesView(
                     availableSchedule: RequestAvailableSchedulesModel(
-                        restaurantId: viewModel.restaurant.id ?? "",
+                        restaurantId: viewModel.restaurant.id ?? 0,
                         date: viewModel.selectedDate,
                         schedules: viewModel.getSelectedSchedules()
                     )
@@ -110,7 +110,7 @@ struct ReservationDateSelectorView: View {
 
 struct HoursAvailableView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservationDateSelectorView(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción"))
+        ReservationDateSelectorView(restaurant: RestaurantModel(id: 1, name: "Lido Bar", address: "Asunción"))
     }
 }
 

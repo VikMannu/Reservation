@@ -10,6 +10,7 @@ import SwiftUI
 enum BackClient {
     case reservationsView
     case availableSchedulesView
+    case busyTableView
 }
 
 struct ClientsView: View {
@@ -17,6 +18,7 @@ struct ClientsView: View {
     
     @ObservedObject var viewModelFilterReservations: ReservationsViewModel
     @ObservedObject var viewModelFilterAvailableShedules: AvailableSchedulesViewModel
+    @ObservedObject var viewModelFilterBusyTable: BusyTableViewModel
     @StateObject var viewModel = ClienstViewModel()
     
     @State private var searchText = ""
@@ -31,12 +33,21 @@ struct ClientsView: View {
         self.backClient = .reservationsView
         self.viewModelFilterReservations = viewModelFilter
         self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
+        self.viewModelFilterBusyTable = BusyTableViewModel(table: TableModel())
     }
     
     init(viewModelFilter: AvailableSchedulesViewModel) {
         self.backClient = .availableSchedulesView
         self.viewModelFilterAvailableShedules = viewModelFilter
-        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: "", name: "", address: ""))
+        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: 0, name: "", address: ""))
+        self.viewModelFilterBusyTable = BusyTableViewModel(table: TableModel())
+    }
+    
+    init(viewModelFilter: BusyTableViewModel) {
+        self.backClient = .busyTableView
+        self.viewModelFilterBusyTable = viewModelFilter
+        self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
+        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: 0, name: "", address: ""))
     }
     
     var filteredClients: [ClientModel] {
@@ -96,9 +107,11 @@ struct ClientsView: View {
                         if backClient == .reservationsView {
                             viewModelFilterReservations.selectedClient = client
                             viewModelFilterReservations.selectedClientTitle = titleClient
-                        } else {
+                        } else if backClient == .availableSchedulesView {
                             viewModelFilterAvailableShedules.selectedClient = client
                             viewModelFilterAvailableShedules.selectedClientTitle = titleClient
+                        } else if backClient == .busyTableView {
+                            viewModelFilterBusyTable.selectedClient = client
                         }
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -107,7 +120,7 @@ struct ClientsView: View {
         .navigationTitle("Clients")
         .overlay(
             ZStack {
-                FloatingActionButton(action: { self.showingAddClient = true})
+                FloatingActionButton(nameImage: "plus", action: { self.showingAddClient = true })
                 if viewModel.isLoading {
                     Color.gray.opacity(0.7)
                         .ignoresSafeArea()
@@ -129,11 +142,12 @@ struct ClientsView: View {
 
 struct ClientsView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientsView(viewModelFilter: ReservationsViewModel(restaurant: RestaurantModel(id: "1", name: "Lido Bar", address: "Asunción")))
+        ClientsView(viewModelFilter: ReservationsViewModel(restaurant: RestaurantModel(id: 1, name: "Lido Bar", address: "Asunción")))
     }
 }
 
 struct FloatingActionButton: View {
+    let nameImage: String
     var action: () -> Void
     
     var body: some View {
@@ -142,7 +156,7 @@ struct FloatingActionButton: View {
             HStack {
                 Spacer()
                 Button(action: action) {
-                    Image(systemName: "plus")
+                    Image(systemName: nameImage)
                         .font(.title)
                         .foregroundColor(.white)
                 }

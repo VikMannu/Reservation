@@ -52,6 +52,19 @@
 		F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */; };
 		F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */; };
 		F6EAFC362A0ADD9D003F9594 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */; };
+		F6F20CD32A328FE9003B20E7 /* TablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CD22A328FE9003B20E7 /* TablesView.swift */; };
+		F6F20CD52A328FF8003B20E7 /* TablesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CD42A328FF8003B20E7 /* TablesViewModel.swift */; };
+		F6F20CD72A32C974003B20E7 /* BusyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CD62A32C974003B20E7 /* BusyTableView.swift */; };
+		F6F20CD92A32C987003B20E7 /* BusyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CD82A32C987003B20E7 /* BusyTableViewModel.swift */; };
+		F6F20CDB2A32CC75003B20E7 /* ConsumptionHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CDA2A32CC75003B20E7 /* ConsumptionHeaderModel.swift */; };
+		F6F20CDD2A32D114003B20E7 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CDC2A32D114003B20E7 /* CategoryModel.swift */; };
+		F6F20CDF2A32D15C003B20E7 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CDE2A32D15C003B20E7 /* ProductModel.swift */; };
+		F6F20CE12A32D273003B20E7 /* ConsumptionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CE02A32D273003B20E7 /* ConsumptionDetailModel.swift */; };
+		F6F20CE32A32F4B0003B20E7 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CE22A32F4B0003B20E7 /* ProductsView.swift */; };
+		F6F20CE52A32F4C4003B20E7 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CE42A32F4C4003B20E7 /* ProductsViewModel.swift */; };
+		F6F20CE72A32F6AC003B20E7 /* AddDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CE62A32F6AC003B20E7 /* AddDetailView.swift */; };
+		F6F20CE92A32F6BE003B20E7 /* AddDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CE82A32F6BE003B20E7 /* AddDetailViewModel.swift */; };
+		F6F20CEB2A3301A5003B20E7 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F20CEA2A3301A5003B20E7 /* MessageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +138,19 @@
 		F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
 		F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
+		F6F20CD22A328FE9003B20E7 /* TablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesView.swift; sourceTree = "<group>"; };
+		F6F20CD42A328FF8003B20E7 /* TablesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesViewModel.swift; sourceTree = "<group>"; };
+		F6F20CD62A32C974003B20E7 /* BusyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTableView.swift; sourceTree = "<group>"; };
+		F6F20CD82A32C987003B20E7 /* BusyTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusyTableViewModel.swift; sourceTree = "<group>"; };
+		F6F20CDA2A32CC75003B20E7 /* ConsumptionHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionHeaderModel.swift; sourceTree = "<group>"; };
+		F6F20CDC2A32D114003B20E7 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		F6F20CDE2A32D15C003B20E7 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		F6F20CE02A32D273003B20E7 /* ConsumptionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionDetailModel.swift; sourceTree = "<group>"; };
+		F6F20CE22A32F4B0003B20E7 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		F6F20CE42A32F4C4003B20E7 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		F6F20CE62A32F6AC003B20E7 /* AddDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailView.swift; sourceTree = "<group>"; };
+		F6F20CE82A32F6BE003B20E7 /* AddDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailViewModel.swift; sourceTree = "<group>"; };
+		F6F20CEA2A3301A5003B20E7 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		F89C3DEE8E98BCEE9AAA0571 /* Pods-Reservation-ReservationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reservation-ReservationUITests.release.xcconfig"; path = "Target Support Files/Pods-Reservation-ReservationUITests/Pods-Reservation-ReservationUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +242,11 @@
 				F6D526602A0DDB0E00C297F7 /* ReservationModel.swift */,
 				F60DE6D82A0E926900CDC033 /* RequestAvailableSchedulesModel.swift */,
 				F60DE6E22A0F01DD00CDC033 /* ResponseReservationModel.swift */,
+				F6F20CDA2A32CC75003B20E7 /* ConsumptionHeaderModel.swift */,
+				F6F20CE02A32D273003B20E7 /* ConsumptionDetailModel.swift */,
+				F6F20CDC2A32D114003B20E7 /* CategoryModel.swift */,
+				F6F20CDE2A32D15C003B20E7 /* ProductModel.swift */,
+				F6F20CEA2A3301A5003B20E7 /* MessageModel.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -223,6 +254,7 @@
 		F65F56BE2A09FA9200F7580A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6F20CD12A328FCC003B20E7 /* ManageTableConsumption */,
 				F6B7246C2A0D785700EC8437 /* Restaurants */,
 				F6B7246D2A0D7D5D00EC8437 /* Clients */,
 				F65F56DC2A0A140100F7580A /* Reservations */,
@@ -374,6 +406,21 @@
 				F6B724702A0D82EE00EC8437 /* AddClientViewModel.swift */,
 			);
 			path = Clients;
+			sourceTree = "<group>";
+		};
+		F6F20CD12A328FCC003B20E7 /* ManageTableConsumption */ = {
+			isa = PBXGroup;
+			children = (
+				F6F20CD22A328FE9003B20E7 /* TablesView.swift */,
+				F6F20CD42A328FF8003B20E7 /* TablesViewModel.swift */,
+				F6F20CD62A32C974003B20E7 /* BusyTableView.swift */,
+				F6F20CD82A32C987003B20E7 /* BusyTableViewModel.swift */,
+				F6F20CE62A32F6AC003B20E7 /* AddDetailView.swift */,
+				F6F20CE82A32F6BE003B20E7 /* AddDetailViewModel.swift */,
+				F6F20CE22A32F4B0003B20E7 /* ProductsView.swift */,
+				F6F20CE42A32F4C4003B20E7 /* ProductsViewModel.swift */,
+			);
+			path = ManageTableConsumption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -618,25 +665,36 @@
 				F65F56CC2A0A003E00F7580A /* DateFormatter+Helpers.swift in Sources */,
 				F65F56C52A09FC9500F7580A /* ErrorModel.swift in Sources */,
 				F66F5B7A2A09F91E0017F322 /* Persistence.swift in Sources */,
+				F6F20CD72A32C974003B20E7 /* BusyTableView.swift in Sources */,
+				F6F20CE72A32F6AC003B20E7 /* AddDetailView.swift in Sources */,
 				F66F5B732A09F91D0017F322 /* ContentView.swift in Sources */,
 				F65F56DA2A0A07EE00F7580A /* String+Helpers.swift in Sources */,
+				F6F20CDF2A32D15C003B20E7 /* ProductModel.swift in Sources */,
 				F6B724692A0D6C8C00EC8437 /* ReservationDateSelectorView.swift in Sources */,
 				F6DCB1A42A0A8E9C00E2D7F1 /* RestaurantsViewModel.swift in Sources */,
 				F6DCB1A82A0A998400E2D7F1 /* ReservationsView.swift in Sources */,
 				F6DCB1AA2A0A999800E2D7F1 /* ReservationsViewModel.swift in Sources */,
 				F66F5B7D2A09F91E0017F322 /* Reservation.xcdatamodeld in Sources */,
+				F6F20CE52A32F4C4003B20E7 /* ProductsViewModel.swift in Sources */,
 				F6DCB1A22A0A8E7900E2D7F1 /* RestaurantsView.swift in Sources */,
+				F6F20CE92A32F6BE003B20E7 /* AddDetailViewModel.swift in Sources */,
 				F65F56D42A0A01CE00F7580A /* Singleton.swift in Sources */,
 				F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */,
 				F60DE6DD2A0ECADB00CDC033 /* AvailableSchedulesView.swift in Sources */,
 				F60DE6D92A0E926900CDC033 /* RequestAvailableSchedulesModel.swift in Sources */,
+				F6F20CD92A32C987003B20E7 /* BusyTableViewModel.swift in Sources */,
+				F6F20CDB2A32CC75003B20E7 /* ConsumptionHeaderModel.swift in Sources */,
+				F6F20CE32A32F4B0003B20E7 /* ProductsView.swift in Sources */,
 				F6DCB19E2A0A788000E2D7F1 /* ContentViewModel.swift in Sources */,
 				F65F56CF2A0A017A00F7580A /* Constans.swift in Sources */,
 				F6D526612A0DDB0E00C297F7 /* ReservationModel.swift in Sources */,
+				F6F20CE12A32D273003B20E7 /* ConsumptionDetailModel.swift in Sources */,
+				F6F20CD32A328FE9003B20E7 /* TablesView.swift in Sources */,
 				F65F56C02A09FB8200F7580A /* APIClient.swift in Sources */,
 				F6EAFC362A0ADD9D003F9594 /* ClientsViewModel.swift in Sources */,
 				F6B7246B2A0D6CA200EC8437 /* ReservationDateSelectorViewModel.swift in Sources */,
 				F65F56C82A0A000300F7580A /* Encodable+Helpers.swift in Sources */,
+				F6F20CDD2A32D114003B20E7 /* CategoryModel.swift in Sources */,
 				F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */,
 				F60DE6DF2A0EFC4A00CDC033 /* ConfirmationTableView.swift in Sources */,
 				F60DE6E12A0EFD2500CDC033 /* ConfirmationTableViewModel.swift in Sources */,
@@ -644,9 +702,11 @@
 				F6B724712A0D82EE00EC8437 /* AddClientViewModel.swift in Sources */,
 				F65F56CA2A0A002400F7580A /* JSONDecoder+Helpers.swift in Sources */,
 				F65F56C32A09FC1300F7580A /* HTTPArrayEncoding.swift in Sources */,
+				F6F20CD52A328FF8003B20E7 /* TablesViewModel.swift in Sources */,
 				F60DE6DB2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift in Sources */,
 				F6DCB1A02A0A7A0E00E2D7F1 /* RestaurantModel.swift in Sources */,
 				F66F5B712A09F91D0017F322 /* ReservationApp.swift in Sources */,
+				F6F20CEB2A3301A5003B20E7 /* MessageModel.swift in Sources */,
 				F6DCB1A62A0A938000E2D7F1 /* UIApplication+Helpers.swift in Sources */,
 				F60DE6E32A0F01DD00CDC033 /* ResponseReservationModel.swift in Sources */,
 				F6D526632A0DDDE800C297F7 /* TableModel.swift in Sources */,

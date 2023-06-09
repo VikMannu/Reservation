@@ -71,6 +71,6 @@ struct ConfirmationTableView: View {
 
 struct ConfirmationTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmationTableView(availableSchedule: RequestAvailableSchedulesModel(), selectedTable: TableModel(id: "1", name: "Test", positionX: 1, positionY: 1, floor: 2, diners: 12, restaurantId: "1"), selectedClient: ClientModel(id: "1", name: "Juan", surname: "Perez", ci: "12345"))
+        ConfirmationTableView(availableSchedule: RequestAvailableSchedulesModel(), selectedTable: TableModel(id: 1, name: "Test", positionX: 1, positionY: 1, floor: 2, diners: 12, restaurantId: "1"), selectedClient: ClientModel(id: 1, name: "Juan", surname: "Perez", ci: "12345"))
     }
 }

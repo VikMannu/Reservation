@@ -8,7 +8,7 @@
 import Foundation
 
 struct RequestAvailableSchedulesModel: Codable {
-    let restaurantId: String
+    let restaurantId: Int
     let date: Date
     let schedules: [Schedule]
     
@@ -19,12 +19,12 @@ struct RequestAvailableSchedulesModel: Codable {
     }
     
     init() {
-        self.restaurantId = "1"
+        self.restaurantId = 1
         self.date = Date()
         self.schedules = [Schedule(startTime: 14, endTime: 15), Schedule(startTime: 15, endTime: 16)]
     }
     
-    init(restaurantId: String, date: Date, schedules: [Schedule]) {
+    init(restaurantId: Int, date: Date, schedules: [Schedule]) {
         self.restaurantId = restaurantId
         self.date = date
         self.schedules = schedules
@@ -32,7 +32,7 @@ struct RequestAvailableSchedulesModel: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        restaurantId = try container.decode(String.self, forKey: .restaurantId)
+        restaurantId = try container.decode(Int.self, forKey: .restaurantId)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd zzz"
         dateFormatter.timeZone = TimeZone.current

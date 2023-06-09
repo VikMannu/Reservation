@@ -8,7 +8,7 @@
 import Foundation
 
 struct RestaurantModel: Codable {
-    let id: String?
+    let id: Int?
     let name: String?
     let address: String?
     

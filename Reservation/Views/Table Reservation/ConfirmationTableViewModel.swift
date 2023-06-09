@@ -9,14 +9,14 @@ import SwiftUI
 
 class ConfirmationTableViewModel: ObservableObject {
     @Published var isLoading = false
-    @Published var restaurant: RestaurantModel = RestaurantModel(id: "", name: "", address: "")
+    @Published var restaurant: RestaurantModel = RestaurantModel(id: 0, name: "", address: "")
     let availableSchedule: RequestAvailableSchedulesModel
     let selectedTable: TableModel
     let selectedClient: ClientModel
     private var responseReservations: [ResponseReservationModel] {
         var responseReservations = [ResponseReservationModel]()
         self.availableSchedule.schedules.forEach { schedule in
-            responseReservations.append(ResponseReservationModel(restaurantId: availableSchedule.restaurantId, tableId: selectedTable.id ?? "", clientId: selectedClient.id ?? "", date: availableSchedule.date, startTime: schedule.startTime, endTime: schedule.endTime, quantity: selectedTable.diners ?? 1))
+            responseReservations.append(ResponseReservationModel(restaurantId: availableSchedule.restaurantId, tableId: selectedTable.id ?? 0, clientId: selectedClient.id ?? 0, date: availableSchedule.date, startTime: schedule.startTime, endTime: schedule.endTime, quantity: selectedTable.diners ?? 1))
         }
         return responseReservations
     }
@@ -32,7 +32,7 @@ class ConfirmationTableViewModel: ObservableObject {
         self.isLoading = true
         APIClient.apiRequest(
             method: .get,
-            api: .restaurant(availableSchedule.restaurantId),
+            api: .restaurant("\(availableSchedule.restaurantId)"),
             successHandler: { (restaurant: RestaurantModel) in
                 self.restaurant = restaurant
                 self.isLoading = false

@@ -8,9 +8,9 @@
 import Foundation
 
 struct ResponseReservationModel: Codable {
-    let restaurantId: String
-    let tableId: String
-    let clientId: String
+    let restaurantId: Int
+    let tableId: Int
+    let clientId: Int
     let date: Date
     let startTime: Int
     let endTime: Int
@@ -26,7 +26,7 @@ struct ResponseReservationModel: Codable {
         case quantity = "cantidad"
     }
     
-    init(restaurantId: String, tableId: String, clientId: String, date: Date, startTime: Int, endTime: Int, quantity: Int) {
+    init(restaurantId: Int, tableId: Int, clientId: Int, date: Date, startTime: Int, endTime: Int, quantity: Int) {
         self.restaurantId = restaurantId
         self.tableId = tableId
         self.clientId = clientId
@@ -38,9 +38,9 @@ struct ResponseReservationModel: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        restaurantId = try container.decode(String.self, forKey: .restaurantId)
-        tableId = try container.decode(String.self, forKey: .tableId)
-        clientId = try container.decode(String.self, forKey: .clientId)
+        restaurantId = try container.decode(Int.self, forKey: .restaurantId)
+        tableId = try container.decode(Int.self, forKey: .tableId)
+        clientId = try container.decode(Int.self, forKey: .clientId)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd zzz"
         dateFormatter.timeZone = TimeZone.current

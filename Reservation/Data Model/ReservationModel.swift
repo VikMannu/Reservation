@@ -8,7 +8,7 @@
 import Foundation
 
 struct ReservationModel: Codable {
-    let id: String?
+    let id: Int?
     let date: Date?
     let timeRange: [TimeRange]?
     let quantity: Int?
@@ -28,7 +28,7 @@ struct ReservationModel: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(String.self, forKey: .id)
+        id = try container.decode(Int.self, forKey: .id)
         let formatter = ISO8601DateFormatter()
         date = try formatter.date(from: container.decode(String.self, forKey: .dateISO8601))
         timeRange = try container.decode([TimeRange].self, forKey: .timeRange)

@@ -8,7 +8,7 @@
 import Foundation
 
 struct TableModel: Codable {
-    let id: String?
+    let id: Int?
     let name: String?
     let positionX: Int?
     let positionY: Int?
@@ -27,7 +27,7 @@ struct TableModel: Codable {
     }
     
     init() {
-        self.id = "1"
+        self.id = 4
         self.name = ""
         self.positionX = 1
         self.positionY = 1
@@ -36,7 +36,7 @@ struct TableModel: Codable {
         self.restaurantId = "1"
     }
     
-    init(id: String?, name: String?, positionX: Int?, positionY: Int?, floor: Int?, diners: Int?, restaurantId: String?) {
+    init(id: Int?, name: String?, positionX: Int?, positionY: Int?, floor: Int?, diners: Int?, restaurantId: String?) {
         self.id = id
         self.name = name
         self.positionX = positionX

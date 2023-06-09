@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
     @StateObject var viewModel = ContentViewModel()
 
     var body: some View {
@@ -24,6 +23,12 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add Reservation")
+                }
+            
+            TablesView()
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                    Text("Manage Consumption")
                 }
         }
     }
