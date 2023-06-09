@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+import Alamofire
+import AlamofireActivityLogger
+
+enum StatusClosedTable {
+    case success
+    case failed
+}
 
 class BusyTableViewModel: ObservableObject {
     @Published var isLoading = false
@@ -75,5 +82,34 @@ class BusyTableViewModel: ObservableObject {
                 }
             )
         }
+    }
+    
+    func downloadPDF(completation: @escaping (StatusClosedTable) -> ()) {
+        let destinationURL = getDestinationURL()
+        self.isLoading = true
+        Alamofire.request("http://localhost:9090/api/services/cerrar-mesa/\(table.id ?? 0)", method: .put).log()
+            .responseData { response in
+                self.isLoading = false
+                switch response.result {
+                case let .success(data):
+                    do {
+                        try data.write(to: destinationURL)
+                        print("Archivo descargado correctamente")
+                        completation(.success)
+                    } catch {
+                        print("Error al guardar el archivo descargado: \(error)")
+                        completation(.failed)
+                    }
+                case let .failure(error):
+                    completation(.failed)
+                    print("Error al descargar el archivo: \(error)")
+                }
+            }
+    }
+    
+    private func getDestinationURL() -> URL {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent("archivo.pdf")
+        return fileURL
     }
 }

@@ -49,6 +49,7 @@
 		F6DCB1A62A0A938000E2D7F1 /* UIApplication+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A52A0A938000E2D7F1 /* UIApplication+Helpers.swift */; };
 		F6DCB1A82A0A998400E2D7F1 /* ReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A72A0A998300E2D7F1 /* ReservationsView.swift */; };
 		F6DCB1AA2A0A999800E2D7F1 /* ReservationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DCB1A92A0A999800E2D7F1 /* ReservationsViewModel.swift */; };
+		F6E27D8F2A339233003252A9 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E27D8E2A339233003252A9 /* PDFView.swift */; };
 		F6EAFC322A0ACFC5003F9594 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */; };
 		F6EAFC342A0ADD8D003F9594 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */; };
 		F6EAFC362A0ADD9D003F9594 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */; };
@@ -135,6 +136,7 @@
 		F6DCB1A52A0A938000E2D7F1 /* UIApplication+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Helpers.swift"; sourceTree = "<group>"; };
 		F6DCB1A72A0A998300E2D7F1 /* ReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsView.swift; sourceTree = "<group>"; };
 		F6DCB1A92A0A999800E2D7F1 /* ReservationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewModel.swift; sourceTree = "<group>"; };
+		F6E27D8E2A339233003252A9 /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
 		F6EAFC312A0ACFC5003F9594 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
 		F6EAFC332A0ADD8D003F9594 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		F6EAFC352A0ADD9D003F9594 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				F6F20CE82A32F6BE003B20E7 /* AddDetailViewModel.swift */,
 				F6F20CE22A32F4B0003B20E7 /* ProductsView.swift */,
 				F6F20CE42A32F4C4003B20E7 /* ProductsViewModel.swift */,
+				F6E27D8E2A339233003252A9 /* PDFView.swift */,
 			);
 			path = ManageTableConsumption;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				F65F56CA2A0A002400F7580A /* JSONDecoder+Helpers.swift in Sources */,
 				F65F56C32A09FC1300F7580A /* HTTPArrayEncoding.swift in Sources */,
 				F6F20CD52A328FF8003B20E7 /* TablesViewModel.swift in Sources */,
+				F6E27D8F2A339233003252A9 /* PDFView.swift in Sources */,
 				F60DE6DB2A0EC9E100CDC033 /* AvailableSchedulesViewModel.swift in Sources */,
 				F6DCB1A02A0A7A0E00E2D7F1 /* RestaurantModel.swift in Sources */,
 				F66F5B712A09F91D0017F322 /* ReservationApp.swift in Sources */,

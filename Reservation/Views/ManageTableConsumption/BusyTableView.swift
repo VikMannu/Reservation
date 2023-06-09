@@ -11,6 +11,7 @@ struct BusyTableView: View {
     @StateObject var viewModel: BusyTableViewModel
     @State private var showingAddDetail = false
     @State private var showingChangeClient = false
+    @State private var showingPDF = false
     
     init(table: TableModel) {
         self._viewModel = StateObject(wrappedValue: BusyTableViewModel(table: table))
@@ -75,6 +76,12 @@ struct BusyTableView: View {
                 isActive: $showingAddDetail,
                 label: {}
             )
+            
+            NavigationLink(
+                destination: PDFView(),
+                isActive: $showingPDF,
+                label: {}
+            )
         }
         .navigationBarTitle("Consumption")
         .overlay(
@@ -93,7 +100,11 @@ struct BusyTableView: View {
     }
     
     private func releaseTable() {
-        
+        viewModel.downloadPDF { statusClosedTable in
+            if statusClosedTable == .success {
+                self.showingPDF = true
+            }
+        }
     }
 }
 
