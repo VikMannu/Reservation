@@ -14,7 +14,7 @@ struct TableModel: Codable {
     let positionY: Int?
     let floor: Int?
     let diners: Int?
-    let restaurantId: String?
+    let restaurantId: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -33,10 +33,10 @@ struct TableModel: Codable {
         self.positionY = 1
         self.floor = 1
         self.diners = 1
-        self.restaurantId = "1"
+        self.restaurantId = 1
     }
     
-    init(id: Int?, name: String?, positionX: Int?, positionY: Int?, floor: Int?, diners: Int?, restaurantId: String?) {
+    init(id: Int?, name: String?, positionX: Int?, positionY: Int?, floor: Int?, diners: Int?, restaurantId: Int?) {
         self.id = id
         self.name = name
         self.positionX = positionX
@@ -46,4 +46,25 @@ struct TableModel: Codable {
         self.restaurantId = restaurantId
     }
     
+}
+
+struct StatusTableModel: Codable {
+    let message: StatusTable?
+}
+
+enum StatusTable: String, Codable {
+    case available = "disponible"
+    case busy = "ocupado"
+    case unspecified
+    
+    var description: String {
+        switch self {
+        case .available:
+            return "disponible"
+        case .busy:
+            return "ocupado"
+        case .unspecified:
+            return "no especificado"
+        }
+    }
 }

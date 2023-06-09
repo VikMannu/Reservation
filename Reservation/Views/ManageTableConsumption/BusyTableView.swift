@@ -17,58 +17,64 @@ struct BusyTableView: View {
     }
     
     var body: some View {
-        VStack {
-            List {
-                Section(header: Text("Header").font(.title).foregroundColor(.blue)) {
-                    NavigationLink(
-                        destination: {
-                            ClientsView(viewModelFilter: viewModel)
-                                .onDisappear {
-                                    viewModel.changeClient()
-                                }
-                        },
-                        label: {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("Client: ")
-                                    Text(viewModel.consumptionHeader.client?.description ?? "")
-                                }
-                                HStack {
-                                    Text("Total: ")
-                                    Text("\(viewModel.consumptionHeader.total ?? 0)")
+        ZStack {
+            VStack {
+                List {
+                    Section(header: Text("Header").font(.title).foregroundColor(.blue)) {
+                        NavigationLink(
+                            destination: {
+                                ClientsView(viewModelFilter: viewModel)
+                                    .onDisappear {
+                                        viewModel.changeClient()
+                                    }
+                            },
+                            label: {
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        Text("Client: ")
+                                        Text(viewModel.consumptionHeader.client?.description ?? "")
+                                    }
+                                    HStack {
+                                        Text("Total: ")
+                                        Text("\(viewModel.consumptionHeader.total ?? 0)")
+                                    }
                                 }
                             }
+                        )
+                    }
+                    
+                    Section(header: Text("Details").font(.title).foregroundColor(.blue)) {
+                        ForEach(viewModel.consumptionDetails, id: \.id) { consumptionDetail in
+                            RowProductView(consumptionDetail: consumptionDetail)
                         }
-                    )
-                }
-                
-                Section(header: Text("Details").font(.title).foregroundColor(.blue)) {
-                    ForEach(viewModel.consumptionDetails, id: \.id) { consumptionDetail in
-                        RowProductView(consumptionDetail: consumptionDetail)
                     }
                 }
-            }
-            
-            HStack {
-                NavigationLink(
-                    destination: { AddDetailView(table: viewModel.table) },
+                
+                Button(
+                    action: { self.releaseTable() },
                     label: {
-                        HStack {
-                            Text("Add Detail")
-                            Image(systemName: "plus")
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: 36)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.blue, lineWidth: 2)
-                        )
-                        .padding(.all)
+                        Text("Release table")
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: 36)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 2)
+                            )
+                            .padding(.all)
                     }
                 )
             }
+            
+            FloatingActionButton(nameImage: "plus", action: { self.showingAddDetail = true })
+                .padding(.bottom, 60)
+            
+            NavigationLink(
+                destination: AddDetailView(table: viewModel.table),
+                isActive: $showingAddDetail,
+                label: {}
+            )
         }
         .navigationBarTitle("Consumption")
         .overlay(
@@ -84,6 +90,10 @@ struct BusyTableView: View {
         .onAppear {
             viewModel.getConsumptions()
         }
+    }
+    
+    private func releaseTable() {
+        
     }
 }
 

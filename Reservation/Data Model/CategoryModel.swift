@@ -8,7 +8,7 @@
 import Foundation
 
 struct CategoryModel: Codable {
-    let id: String?
+    let id: Int?
     let name: String?
     
     enum CodingKeys: String, CodingKey {
