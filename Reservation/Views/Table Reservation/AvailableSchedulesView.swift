@@ -20,7 +20,7 @@ struct AvailableSchedulesView: View {
                 .foregroundColor(Color.blue)
             ZStack(alignment: .center, content: {
                 NavigationLink(
-                    destination: { ClientsView(viewModelFilter: viewModel) },
+                    destination: { ClientsView(delegate: self) },
                     label: {
                         HStack {
                             TextField("Select Client", text: $viewModel.selectedClientTitle)
@@ -64,6 +64,15 @@ struct AvailableSchedulesView: View {
             }
         )
     }
+}
+
+extension AvailableSchedulesView: ClientsViewDelegate {
+    func selectedClient(client: ClientModel) {
+        self.viewModel.selectedClient = client
+        self.viewModel.selectedClientTitle = client.description
+    }
+    
+    
 }
 
 struct AvailableSchedulesView_Previews: PreviewProvider {

@@ -7,61 +7,22 @@
 
 import SwiftUI
 
-enum NextClient {
-    case reservationsView
-    case availableSchedulesView
-    case busyTableView
-    case openTable
+protocol ClientsViewDelegate {
+    func selectedClient(client: ClientModel)
 }
 
 struct ClientsView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var viewModelFilterReservations: ReservationsViewModel
-    @ObservedObject var viewModelFilterAvailableShedules: AvailableSchedulesViewModel
-    @ObservedObject var viewModelFilterBusyTable: BusyTableViewModel
-    @StateObject var viewModel: ClienstViewModel
+    @StateObject var viewModel = ClientsViewModel()
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
     @State private var isPresented = false
     
     @State private var showingAddClient = false
-    @State private var goToBusyTable = false
     
-    let nextClient: NextClient
-    
-    init(table: TableModel) {
-        self.nextClient = .openTable
-        self._viewModel = StateObject(wrappedValue: ClienstViewModel(table: table))
-        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: 0, name: "", address: ""))
-        self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
-        self.viewModelFilterBusyTable = BusyTableViewModel(table: TableModel())
-    }
-    
-    init(viewModelFilter: ReservationsViewModel) {
-        self.nextClient = .reservationsView
-        self._viewModel = StateObject(wrappedValue: ClienstViewModel())
-        self.viewModelFilterReservations = viewModelFilter
-        self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
-        self.viewModelFilterBusyTable = BusyTableViewModel(table: TableModel())
-    }
-    
-    init(viewModelFilter: AvailableSchedulesViewModel) {
-        self.nextClient = .availableSchedulesView
-        self._viewModel = StateObject(wrappedValue: ClienstViewModel())
-        self.viewModelFilterAvailableShedules = viewModelFilter
-        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: 0, name: "", address: ""))
-        self.viewModelFilterBusyTable = BusyTableViewModel(table: TableModel())
-    }
-    
-    init(viewModelFilter: BusyTableViewModel) {
-        self.nextClient = .busyTableView
-        self._viewModel = StateObject(wrappedValue: ClienstViewModel())
-        self.viewModelFilterBusyTable = viewModelFilter
-        self.viewModelFilterAvailableShedules = AvailableSchedulesViewModel(availableSchedule: RequestAvailableSchedulesModel())
-        self.viewModelFilterReservations = ReservationsViewModel(restaurant: RestaurantModel(id: 0, name: "", address: ""))
-    }
+    var delegate: ClientsViewDelegate?
     
     var filteredClients: [ClientModel] {
         if searchText.isEmpty {
@@ -89,11 +50,10 @@ struct ClientsView: View {
                         }
                     ).foregroundColor(.primary)
                     
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                    }
+                    Button(
+                        action: { self.searchText = "" },
+                        label: { Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1) }
+                    )
                 }
                 .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
                 .foregroundColor(.secondary)
@@ -116,29 +76,10 @@ struct ClientsView: View {
             List(filteredClients, id: \.id) { client in
                 Text("\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")")
                     .onTapGesture {
-                        let titleClient = "\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")"
-                        if nextClient == .reservationsView {
-                            viewModelFilterReservations.selectedClient = client
-                            viewModelFilterReservations.selectedClientTitle = titleClient
-                            presentationMode.wrappedValue.dismiss()
-                        } else if nextClient == .availableSchedulesView {
-                            viewModelFilterAvailableShedules.selectedClient = client
-                            viewModelFilterAvailableShedules.selectedClientTitle = titleClient
-                            presentationMode.wrappedValue.dismiss()
-                        } else if nextClient == .busyTableView {
-                            viewModelFilterBusyTable.selectedClient = client
-                            presentationMode.wrappedValue.dismiss()
-                        } else if nextClient == .openTable {
-                            self.openTable(client: client)
-                        }
+                        self.delegate?.selectedClient(client: client)
+                        self.presentationMode.wrappedValue.dismiss()
                     }
             }
-            
-            NavigationLink(
-                isActive: $goToBusyTable,
-                destination: { BusyTableView(table: viewModel.selectedTable ?? TableModel()) },
-                label: {}
-            )
         } // Main VStack
         .navigationTitle("Clients")
         .overlay(
@@ -161,19 +102,11 @@ struct ClientsView: View {
             self.viewModel.getClients()
         }
     }
-    
-    private func openTable(client: ClientModel) {
-        viewModel.openTable(client: client) { statusOpenTable in
-            if statusOpenTable == .success {
-                self.goToBusyTable = true
-            }
-        }
-    }
 }
 
 struct ClientsView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientsView(viewModelFilter: ReservationsViewModel(restaurant: RestaurantModel(id: 1, name: "Lido Bar", address: "Asunción")))
+        ClientsView()
     }
 }
 

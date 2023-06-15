@@ -38,11 +38,10 @@ struct ProductsView: View {
                         }
                     ).foregroundColor(.primary)
                     
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                    }
+                    Button(
+                        action: { self.searchText = "" },
+                        label: { Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1) }
+                    )
                 }
                 .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
                 .foregroundColor(.secondary)

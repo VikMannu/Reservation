@@ -21,6 +21,7 @@ class ReservationsViewModel: ObservableObject {
     
     init(restaurant: RestaurantModel) {
         self.restaurant = restaurant
+        self.getReservations()
     }
     
     func getReservations() {

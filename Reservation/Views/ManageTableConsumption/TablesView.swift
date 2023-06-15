@@ -38,11 +38,10 @@ struct TablesView: View {
                             }
                         ).foregroundColor(.primary)
                         
-                        Button(action: {
-                            self.searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                        }
+                        Button(
+                            action: { self.searchText = "" },
+                            label: { Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1) }
+                        )
                     }
                     .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
                     .foregroundColor(.secondary)
@@ -72,12 +71,12 @@ struct TablesView: View {
                  NavigationLink(
                     isActive: $goToBusyTableView,
                     destination: { BusyTableView(table: viewModel.selectedTable) },
-                    label: { }
+                    label: {}
                  )
                 
                 NavigationLink(
                    isActive: $goToClientsView,
-                   destination: { ClientsView(table: viewModel.selectedTable) },
+                   destination: { ClientsView(delegate: self) },
                    label: {}
                 )
             }.navigationBarTitle(Text("Tables"))
@@ -104,6 +103,17 @@ struct TablesView: View {
                 self.goToBusyTableView = true
             } else if status == .available {
                 self.goToClientsView = true
+            }
+        }
+    }
+}
+
+extension TablesView: ClientsViewDelegate {
+    func selectedClient(client: ClientModel) {
+        self.goToClientsView = false
+        viewModel.openTable(client: client) { statusOpenTable in
+            if statusOpenTable == .success {
+                self.goToBusyTableView = true
             }
         }
     }

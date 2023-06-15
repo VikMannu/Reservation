@@ -23,12 +23,7 @@ struct BusyTableView: View {
                 List {
                     Section(header: Text("Header").font(.title).foregroundColor(.blue)) {
                         NavigationLink(
-                            destination: {
-                                ClientsView(viewModelFilter: viewModel)
-                                    .onDisappear {
-                                        viewModel.changeClient()
-                                    }
-                            },
+                            destination: { ClientsView(delegate: self) },
                             label: {
                                 VStack(alignment: .leading) {
                                     HStack {
@@ -105,6 +100,13 @@ struct BusyTableView: View {
                 self.showingPDF = true
             }
         }
+    }
+}
+
+extension BusyTableView: ClientsViewDelegate {
+    func selectedClient(client: ClientModel) {
+        self.viewModel.selectedClient = client
+        self.viewModel.changeClient()
     }
 }
 

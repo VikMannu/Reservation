@@ -30,7 +30,7 @@ struct ReservationsView: View {
                 .foregroundColor(Color.blue)
             ZStack(alignment: .center, content: {
                 NavigationLink(
-                    destination: { ClientsView(viewModelFilter: viewModel) },
+                    destination: { ClientsView(delegate: self) },
                     label: {
                         HStack {
                             TextField("Select Client", text: $viewModel.selectedClientTitle)
@@ -99,10 +99,15 @@ struct ReservationsView: View {
                 }
             }
         )
-        .onAppear {
-            viewModel.getReservations()
-        }
     } // Body
+}
+
+extension ReservationsView: ClientsViewDelegate {
+    func selectedClient(client: ClientModel) {
+        self.viewModel.selectedClient = client
+        self.viewModel.selectedClientTitle = client.description
+        viewModel.getReservations()
+    }
 }
 
 struct FilterView_Previews: PreviewProvider {
