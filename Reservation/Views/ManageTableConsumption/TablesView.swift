@@ -63,7 +63,7 @@ struct TablesView: View {
                 // List View
                 List(filteredTables, id: \.id) { table in
                     Button(
-                        action: { self.getStatusTable(table: table) },
+                        action: { self.selectTable(table: table) },
                         label: { RowTableMin(table: table) }
                     )
                 }
@@ -71,13 +71,13 @@ struct TablesView: View {
                  NavigationLink(
                     isActive: $goToBusyTableView,
                     destination: { BusyTableView(table: viewModel.selectedTable) },
-                    label: {}
+                    label: { EmptyView() }
                  )
                 
                 NavigationLink(
                    isActive: $goToClientsView,
-                   destination: { ClientsView(delegate: self) },
-                   label: {}
+                   destination: { ClientsView(isPresent: $goToClientsView, delegate: self) },
+                   label: { EmptyView() }
                 )
             }.navigationBarTitle(Text("Tables"))
         }
@@ -96,7 +96,7 @@ struct TablesView: View {
         }
     }
     
-    private func getStatusTable(table: TableModel) {
+    private func selectTable(table: TableModel) {
         viewModel.selectedTable = table
         viewModel.getStatusTable() { status in
             if status == .busy {
@@ -110,7 +110,6 @@ struct TablesView: View {
 
 extension TablesView: ClientsViewDelegate {
     func selectedClient(client: ClientModel) {
-        self.goToClientsView = false
         viewModel.openTable(client: client) { statusOpenTable in
             if statusOpenTable == .success {
                 self.goToBusyTableView = true

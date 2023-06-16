@@ -15,11 +15,9 @@ struct ClientsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @StateObject var viewModel = ClientsViewModel()
-    
+    var isPresent: Binding<Bool>?
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
-    @State private var isPresented = false
-    
     @State private var showingAddClient = false
     
     var delegate: ClientsViewDelegate?
@@ -74,10 +72,14 @@ struct ClientsView: View {
             
             // List Clients
             List(filteredClients, id: \.id) { client in
-                Text("\(client.ci ?? "") | \(client.name ?? "") \(client.surname ?? "")")
+                Text(client.description)
                     .onTapGesture {
                         self.delegate?.selectedClient(client: client)
-                        self.presentationMode.wrappedValue.dismiss()
+                        if let isPresent = self.isPresent {
+                            isPresent.wrappedValue = false
+                        } else {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }
             }
         } // Main VStack

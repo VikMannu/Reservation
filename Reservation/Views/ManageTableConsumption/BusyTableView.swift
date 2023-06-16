@@ -69,13 +69,13 @@ struct BusyTableView: View {
             NavigationLink(
                 destination: AddDetailView(table: viewModel.table),
                 isActive: $showingAddDetail,
-                label: {}
+                label: { EmptyView() }
             )
             
             NavigationLink(
                 destination: PDFView(),
                 isActive: $showingPDF,
-                label: {}
+                label: { EmptyView() }
             )
         }
         .navigationBarTitle("Consumption")
